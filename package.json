@@ -1,0 +1,35 @@
+{
+	"name": "sails-hook-jobmanager",
+	"version": "1.0.0",
+	"description": "A sails hook to schedule and run server side jobs.",
+	"main": "index.js",
+	"keywords": [
+		"sails",
+		"jobmanager",
+		"job manager",
+		"server jobs",
+		"data quality"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kdclaw3/sails-hook-jobmanager.git"
+	},
+	"author": "Dee Clawson",
+	"license": "MIT",
+	"dependencies": {
+		"captains-log": "^2.0.x"
+	},
+	"scripts": {
+		"lint": "eslint . --ext=js --fix;  exit 0"
+	},
+	"peerDependencies": {
+		"sails": "^1.x.x"
+	},
+	"sails": {
+		"isHook": true,
+		"hookName": "jobmanager"
+	},
+	"optionalDependencies": {
+		"eslint": "^5.1.x"
+	}
+}
