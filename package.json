@@ -18,6 +18,7 @@
 	"license": "MIT",
 	"dependencies": {},
 	"scripts": {
+		"test": "./node_modules/mocha/bin/mocha test",
 		"lint": "eslint . --ext=js --fix;  exit 0"
 	},
 	"peerDependencies": {
@@ -29,5 +30,11 @@
 	},
 	"optionalDependencies": {
 		"eslint": "^5.1.x"
+	},
+	"devDependencies": {
+		"captains-log": "^2.0.1",
+		"chai": "^4.1.2",
+		"mocha": "^5.2.0",
+		"moment": "^2.22.2"
 	}
 }

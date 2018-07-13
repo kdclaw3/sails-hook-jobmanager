@@ -3,7 +3,7 @@ module.exports = {
 	'env': {
 		es6: true,
 		node: true,
-		browser: true
+		mocha: true
 	},
 	'parserOptions': {
 		ecmaVersion: 6,
@@ -49,7 +49,7 @@ module.exports = {
 
 	},
 	'globals': {
-		sails: true
+		//sails: true
 	}
 
 };
