@@ -2,7 +2,6 @@
  * Module dependencies
  */
 
-
 /**
  * Jobmanager hook
  *
@@ -68,7 +67,7 @@ module.exports = function defineJobmanagerHook(sails) {
 				throw new Error(
 					'\n\n[sails-hook-jobmanager] -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n' +
 					'[sails-hook-jobmanager] Could not import jobs, view error\n' +
-					'[sails-hook-jobmanager] -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n\n' + err
+					'[sails-hook-jobmanager] -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n\n'
 				);
 			}
 

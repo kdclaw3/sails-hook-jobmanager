@@ -1,4 +1,4 @@
-const moment = require('moment');
+//const moment = require('moment');
 
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
@@ -18,11 +18,23 @@ module.exports = {
 	*/
 
 	// this job runs every minute immediatly after starting the job
-	jobThatRunsEveryMinute: {
+	a: {
 		interval: 1,
 		start: new Date(),
 		run: () => {
-			console.log(' [jobThatRunsEveryMinute] this job runs every minute immediatly after starting the job');
+			for (let i = 0; i < 100; i++) {
+				console.log('a', i);
+			}
+		}
+	},
+
+	b: {
+		interval: 1,
+		start: new Date(),
+		run: () => {
+			for (let i = 0; i < 100; i++) {
+				console.log('b', i);
+			}
 		}
 	}
 
