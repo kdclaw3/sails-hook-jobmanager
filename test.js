@@ -6,7 +6,7 @@ const	expect = require('chai').expect;
 let sails = {
 	log: {
 		debug: (x) => {
-			console.log(x);
+			console.log(x); //eslint-disable-line no-console
 		}
 	}
 };
@@ -65,7 +65,7 @@ let done = function () {
 sails = {
 	log: {
 		debug: (x) => {
-			console.log(x);
+			console.log(x); //eslint-disable-line no-console
 		}
 	},
 	jobmanager: {
@@ -87,42 +87,11 @@ describe('INITIALIZE', function () {
 
 	});
 
-	it('expects to initialize', function () {
+	it('expects to run the example config', function () {
 
-
-		let r = hook(sails).initialize(done);
+		hook(sails).initialize(done);
 		//expect(r).to.deep.equal(false);
 
 	});
-
-	/*
-	it('expects to throw error with files not in default location', function () {
-
-		sails.config = {
-			jobmanager: {
-				enabled: true
-			}
-		};
-
-		expect( () => {hook(sails).defaults();} ).to.throw(Error);
-
-	});
-
-	it('expects to return defaults with a valid file', function () {
-
-		sails.config = {
-			jobmanager: {
-				enabled: true,
-				path: './example'
-			}
-		};
-
-		let r = hook(sails).defaults();
-		expect(r).to.deep.equal({ path: '../../jobs' });
-
-
-	});
-	*/
-
 
 });
