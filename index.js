@@ -59,6 +59,8 @@ module.exports = function defineJobmanagerHook(sails) {
 					for (let prop in props) {
 						if (typeof job[prop] !== props[prop]) {
 							validateFalse += `[sails-hook-jobmanager] ${key} -> ${prop} prop should be ${props[prop]}, found ${typeof job[prop]}.\n`;
+						} else if (prop === 'start' && ( job[prop] instanceof Date === false || isNaN(job[prop])) ) {
+							validateFalse += `[sails-hook-jobmanager] ${key} -> ${prop} prop should be a valid date, it did not validate, returned ${new Date(job[prop])}.\n`;
 						}
 					}
 				}
