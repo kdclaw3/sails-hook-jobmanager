@@ -1,7 +1,6 @@
 /**
  * Module dependencies
  */
-const log = require('captains-log')();
 
 
 /**
@@ -62,7 +61,7 @@ module.exports = function defineJobmanagerHook(sails) {
 						'[sails-hook-jobmanager] -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n\n'
 					);
 				} else {
-					log.info('[sails-hook-jobmanager] -> job configuration sucessfully loaded.');
+					sails.log.info('[sails-hook-jobmanager] -> job configuration sucessfully loaded.');
 				}
 
 			}
@@ -80,14 +79,14 @@ module.exports = function defineJobmanagerHook(sails) {
 
 			if (typeof sails.config.custom.jobmanager === 'boolean' && sails.config.custom.jobmanager === true ) {
 
-				log.info('[sails-hook-jobmanager] -> initializing.');
+				sails.log.info('[sails-hook-jobmanager] -> initializing.');
 
 				sails.after('lifted', function () {
 
 					let jobs = require('../../jobs');
 
 					setInterval( (d = new Date()) => {
-						log.info('[sails-hook-jobmanager] -> pulse ' + d.getHours() + ':' + d.getMinutes());
+						sails.log.info('[sails-hook-jobmanager] -> pulse ' + d.getHours() + ':' + d.getMinutes());
 
 						let minutesPastMidnight = (d.getHours() * 60) + d.getMinutes();
 
