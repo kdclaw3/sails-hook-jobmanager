@@ -3,7 +3,7 @@
 
 ### About
 
-This project was created to run larger server side jobs inside of sailsjs. For useage including basic configuration see this example project [earth_rocker_project_boilerplate] (https://github.com/kdclaw3/earth_rocker_project_boilerplate)
+This project was created to run larger server side jobs inside of sailsjs. For usage including basic configuration see this example project [earth_rocker_project_boilerplate] (https://github.com/kdclaw3/earth_rocker_project_boilerplate)
 
 ### Run
 
