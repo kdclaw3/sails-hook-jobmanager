@@ -12,9 +12,13 @@ module.exports = function defineJobmanagerHook (sails) {
   // set the default file path if none is enabled
   let defaults = { path: ('../../jobs') };
 
-  function log (s) {
+  const log = (strings, ...props) => {
+    let s = '';
+    for (let i = 0, l = Math.max(strings.length, props.length); i < l; i++) {
+      s += (strings[i] ? strings[i] : '') + (props[i] ? props[i] : '');
+    }
     sails.log.debug(`[sails-hook-jobmanager] -> ${s}.`);
-  }
+  };
 
   return {
 
@@ -29,15 +33,15 @@ module.exports = function defineJobmanagerHook (sails) {
 
       // verify that the hook is enabled else return
       if (!(sails && sails.config && sails.config.jobmanager && sails.config.jobmanager.enabled)) {
-        log('DISABLED -> sails.config.jobmanager.enabled !== true');
+        log`DISABLED -> sails.config.jobmanager.enabled !== true`;
         return false;
       }
 
       // inform if path is overwritten
       if (sails.config.jobmanager.path) {
-        log('job manager path provided attemting to use ' + sails.config.jobmanager.path);
+        log`job manager path provided attemting to use ${sails.config.jobmanager.path}`;
       } else {
-        log('no job manager path provided attemting to use default ' + defaults.path);
+        log`no job manager path provided attemting to use default ${defaults.path}`;
       }
 
       let validateFalse = '';
@@ -78,7 +82,7 @@ module.exports = function defineJobmanagerHook (sails) {
 					'[sails-hook-jobmanager] -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n\n'
         );
       } else {
-        log('job configuration sucessfully loaded');
+        log`job configuration sucessfully loaded`;
       }
 
       return defaults;
@@ -97,7 +101,7 @@ module.exports = function defineJobmanagerHook (sails) {
         return done();
       }
 
-      log('initializing');
+      log`initializing`;
 
       sails.after('lifted', function () {
 
@@ -106,7 +110,7 @@ module.exports = function defineJobmanagerHook (sails) {
 
         setInterval((d = new Date()) => {
           if (sails.config.jobmanager.pulse) {
-            log('pulse ' + d.getHours() + ':' + `0${d.getMinutes()}`.slice(-2));
+            log`pulse ${d.getHours()}:${('0' + d.getMinutes()).slice(-2)}`;
           }
 
           let minutesPastMidnight = (d.getHours() * 60) + d.getMinutes();
@@ -117,7 +121,6 @@ module.exports = function defineJobmanagerHook (sails) {
             if ((d >= job.start) && (evaltime % job.interval === 0)) {
               job.run();
             }
-
           }
 
         }, 60000);
