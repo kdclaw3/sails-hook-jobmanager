@@ -20,6 +20,10 @@ module.exports = function defineJobmanagerHook (sails) {
     sails.log.debug(`[sails-hook-jobmanager] -> ${s}.`);
   };
 
+  const mpm = d => {
+    return (d.getHours() * 60) + d.getMinutes();
+  };
+
   return {
 
     /**
@@ -113,11 +117,11 @@ module.exports = function defineJobmanagerHook (sails) {
             log`pulse ${d.getHours()}:${('0' + d.getMinutes()).slice(-2)}`;
           }
 
-          let minutesPastMidnight = (d.getHours() * 60) + d.getMinutes();
+          let intervalMPM = mpm(d);
 
           for (let key in jobs) {
             let job = jobs[key];
-            let evaltime = minutesPastMidnight - job.start.getMinutes();
+            let evaltime = intervalMPM - mpm(job.start);
             if ((d >= job.start) && (evaltime % job.interval === 0)) {
               job.run();
             }

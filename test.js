@@ -41,6 +41,7 @@ describe('DEFAULTS', function () {
 
     sails.config = {
       jobmanager: {
+        pulse: true,
         enabled: true,
         path: './example'
       }

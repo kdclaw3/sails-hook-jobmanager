@@ -1,10 +1,5 @@
-// const moment = require('moment');
-
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
-const hourly = 60;
-const daily = 1440;
-/* eslint-enable no-unused-vars */
+const moment = require('moment');
+const hourly = 60, daily = 1440;
 
 
 module.exports = {
@@ -28,12 +23,32 @@ module.exports = {
     }
   },
 
-  b: {
-    interval: 1,
+  aa: {
+    interval: 2,
     start: new Date(),
     run: () => {
       for (let i = 0; i < 100; i++) {
+        console.log('aa', i);
+      }
+    }
+  },
+
+  b: {
+    interval: hourly,
+    start: new Date(moment().startOf('hour').add(26, 'minutes')),
+    run: () => {
+      for (let i = 0; i < 100; i++) {
         console.log('b', i);
+      }
+    }
+  },
+
+  c: {
+    interval: daily,
+    start: new Date(moment().startOf('day').add(16, 'hours').add(26, 'minutes')),
+    run: () => {
+      for (let i = 0; i < 100; i++) {
+        console.log('c', i);
       }
     }
   }
